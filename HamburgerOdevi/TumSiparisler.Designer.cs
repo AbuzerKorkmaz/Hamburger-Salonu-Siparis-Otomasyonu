@@ -48,7 +48,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(32, 27);
+            label1.Location = new Point(23, 9);
             label1.Name = "label1";
             label1.Size = new Size(186, 30);
             label1.TabIndex = 0;
@@ -58,7 +58,7 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(23, 71);
+            listBox1.Location = new Point(23, 44);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(235, 364);
             listBox1.TabIndex = 1;
@@ -66,7 +66,7 @@
             // gbCiro
             // 
             gbCiro.Controls.Add(label2);
-            gbCiro.Location = new Point(307, 71);
+            gbCiro.Location = new Point(292, 41);
             gbCiro.Name = "gbCiro";
             gbCiro.Size = new Size(131, 85);
             gbCiro.TabIndex = 2;
@@ -86,7 +86,7 @@
             // gbToplamSiparis
             // 
             gbToplamSiparis.Controls.Add(lblToplamSiparis);
-            gbToplamSiparis.Location = new Point(307, 162);
+            gbToplamSiparis.Location = new Point(292, 132);
             gbToplamSiparis.Name = "gbToplamSiparis";
             gbToplamSiparis.Size = new Size(131, 75);
             gbToplamSiparis.TabIndex = 3;
@@ -106,7 +106,7 @@
             // dbEkstraMalzemeGeliri
             // 
             dbEkstraMalzemeGeliri.Controls.Add(lblEkstraGelir);
-            dbEkstraMalzemeGeliri.Location = new Point(307, 262);
+            dbEkstraMalzemeGeliri.Location = new Point(292, 232);
             dbEkstraMalzemeGeliri.Name = "dbEkstraMalzemeGeliri";
             dbEkstraMalzemeGeliri.Size = new Size(131, 86);
             dbEkstraMalzemeGeliri.TabIndex = 4;
@@ -126,7 +126,7 @@
             // gbSatilanUrunAdedi
             // 
             gbSatilanUrunAdedi.Controls.Add(lblUrunAdedi);
-            gbSatilanUrunAdedi.Location = new Point(307, 359);
+            gbSatilanUrunAdedi.Location = new Point(292, 329);
             gbSatilanUrunAdedi.Name = "gbSatilanUrunAdedi";
             gbSatilanUrunAdedi.Size = new Size(131, 79);
             gbSatilanUrunAdedi.TabIndex = 5;
@@ -147,7 +147,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(484, 450);
+            ClientSize = new Size(484, 437);
             Controls.Add(gbSatilanUrunAdedi);
             Controls.Add(dbEkstraMalzemeGeliri);
             Controls.Add(gbToplamSiparis);
