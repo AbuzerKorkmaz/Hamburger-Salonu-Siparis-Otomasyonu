@@ -34,12 +34,11 @@ namespace HamburgerOdevi
         List<Menu> menu;
         List<EkstraMalzemeMenusu> Malzemeler;
         double menuFiyati = 0;
-        double ekMalzemeFiyati = 0;
         double siparisBoyutCarpani;
         int adet;
         private void btnSiparisEkle_Click(object sender, EventArgs e)
         {
-            
+            double ekMalzemeFiyati = 0;
             Siparis siparis = new Siparis();
             siparis.MenuTipi = comboBox1.SelectedItem.ToString();
             foreach (Menu item in menu)
@@ -50,11 +49,12 @@ namespace HamburgerOdevi
             {
                     if (item.Checked)
                     {
+                     siparis.EkMalzeme += item.Text + " ";
                             foreach (EkstraMalzemeMenusu item1 in Malzemeler)
-                             {
-                                 siparis.EkMalzeme += item1.MalzemeIsmi + " ";
+                            {
                                 ekMalzemeFiyati += item1.Fiyat;
-                             } 
+                            }
+                                         
                     }
                 
             }
@@ -62,9 +62,10 @@ namespace HamburgerOdevi
             siparisBoyutCarpani= rbKucuk.Checked ? menuFiyati : rbOrta.Checked ? menuFiyati*0.1 : menuFiyati*0.2;
             adet=siparis.MenuAdeti = (int)numericUpDown1.Value;
 
+            siparis.Tutar = TotalTutarHesapla(menuFiyati, ekMalzemeFiyati, siparisBoyutCarpani, adet);
             list.Add(siparis);
            
-            //lblToplamFiyat.Text = (TotalTutarHesapla(menuFiyati,ekMalzemeFiyati,siparisBoyutCarpani,adet)).ToString();
+            lblToplamFiyat.Text = siparis.Tutar.ToString();
             listBox1.Items.Add(siparis);
 
         }
