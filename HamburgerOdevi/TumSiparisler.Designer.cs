@@ -31,7 +31,7 @@
             label1 = new Label();
             listBox1 = new ListBox();
             gbCiro = new GroupBox();
-            label2 = new Label();
+            lblCiro = new Label();
             gbToplamSiparis = new GroupBox();
             lblToplamSiparis = new Label();
             dbEkstraMalzemeGeliri = new GroupBox();
@@ -65,7 +65,7 @@
             // 
             // gbCiro
             // 
-            gbCiro.Controls.Add(label2);
+            gbCiro.Controls.Add(lblCiro);
             gbCiro.Location = new Point(477, 41);
             gbCiro.Name = "gbCiro";
             gbCiro.Size = new Size(131, 85);
@@ -73,15 +73,15 @@
             gbCiro.TabStop = false;
             gbCiro.Text = "Ciro";
             // 
-            // label2
+            // lblCiro
             // 
-            label2.AutoSize = true;
-            label2.ForeColor = Color.Red;
-            label2.Location = new Point(22, 39);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 0;
-            label2.Text = "label2";
+            lblCiro.AutoSize = true;
+            lblCiro.ForeColor = Color.Red;
+            lblCiro.Location = new Point(22, 39);
+            lblCiro.Name = "lblCiro";
+            lblCiro.Size = new Size(38, 15);
+            lblCiro.TabIndex = 0;
+            lblCiro.Text = "label2";
             // 
             // gbToplamSiparis
             // 
@@ -177,7 +177,7 @@
         private GroupBox gbToplamSiparis;
         private GroupBox dbEkstraMalzemeGeliri;
         private GroupBox gbSatilanUrunAdedi;
-        private Label label2;
+        private Label lblCiro;
         private Label lblToplamSiparis;
         private Label lblEkstraGelir;
         private Label lblUrunAdedi;

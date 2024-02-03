@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,12 +13,14 @@ namespace HamburgerOdevi
 {
     public partial class frmSiparis : Form
     {
-        public frmSiparis(List<Siparis> list,List<Menu> _menu,List<EkstraMalzemeMenusu> ekstraMalzemes)
+        public frmSiparis(List<Siparis> list,List<Menu> _menu,List<EkstraMalzemeMenusu> ekstraMalzemes,List<Siparis> _siparis)
         {
             InitializeComponent();
             this.list = list;
             this.menu = _menu;
             this.Malzemeler= ekstraMalzemes;
+            onayliSiparisler = _siparis;
+            
             foreach (Menu item in _menu)
             {
                 comboBox1.Items.Add(item);
@@ -30,14 +33,18 @@ namespace HamburgerOdevi
             }
 
         }
+        
         List<Siparis> list;
         List<Menu> menu;
         List<EkstraMalzemeMenusu> Malzemeler;
+       
         double menuFiyati = 0;
         double siparisBoyutCarpani;
         int adet;
+        double siparisinToplamTutari = 0;
         private void btnSiparisEkle_Click(object sender, EventArgs e)
         {
+            
             double ekMalzemeFiyati = 0;
             Siparis siparis = new Siparis();
             siparis.MenuTipi = comboBox1.SelectedItem.ToString();
@@ -63,18 +70,26 @@ namespace HamburgerOdevi
             adet=siparis.MenuAdeti = (int)numericUpDown1.Value;
 
             siparis.Tutar = TotalTutarHesapla(menuFiyati, ekMalzemeFiyati, siparisBoyutCarpani, adet);
-            list.Add(siparis);
+            siparisinToplamTutari += siparis.Tutar;
            
-            lblToplamFiyat.Text = siparis.Tutar.ToString();
+            list.Add(siparis);
+            
+          
+            lblToplamFiyat.Text = siparisinToplamTutari.ToString();
             listBox1.Items.Add(siparis);
 
         }
-       
+        List<Siparis> onayliSiparisler;
         private void btnSiparisOnayla_Click(object sender, EventArgs e)
         {
+
+            onayliSiparisler = list;
+
             MessageBox.Show("Siparişi Onaylıyor musunuz? ", "Onay Mesajı", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
+        
         private double TotalTutarHesapla(double menuP,double extraMP, double cons, int quantity) {
+           
             
             return ((menuP+cons)+extraMP)*quantity;
         }
