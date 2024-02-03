@@ -12,9 +12,23 @@ namespace HamburgerOdevi
 {
     public partial class EktraMenu : Form
     {
-        public EktraMenu()
+        List<Menu> _yeniMenu = new List<Menu>();
+        public EktraMenu(List<Menu> menus)
         {
             InitializeComponent();
+            _yeniMenu = menus;
+        }
+        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.MenuIsmi= txtMenuAdi.Text;
+            menu.Fiyat = Convert.ToDouble(txtMenuFiyat.Text);
+            _yeniMenu.Add(menu);
+            MessageBox.Show($"Yeni menu eklendi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           txtMenuAdi.Text = "";
+            txtMenuFiyat.Text = "";
+            
         }
     }
 }

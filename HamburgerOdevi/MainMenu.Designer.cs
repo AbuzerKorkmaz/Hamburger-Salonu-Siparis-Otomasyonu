@@ -39,13 +39,10 @@
             numericUpDown1 = new NumericUpDown();
             label2 = new Label();
             lblToplamFiyat = new Label();
-            button1 = new Button();
+            btnSiparisOnayla = new Button();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            cbKetcap = new CheckBox();
-            cbMayonez = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -61,7 +58,6 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Big Mac Menu", "Regular Chichen Menu" });
             comboBox1.Location = new Point(29, 162);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(121, 23);
@@ -117,6 +113,7 @@
             btnSiparisEkle.TabIndex = 6;
             btnSiparisEkle.Text = "Ekle";
             btnSiparisEkle.UseVisualStyleBackColor = true;
+            btnSiparisEkle.Click += btnSiparisEkle_Click;
             // 
             // listBox1
             // 
@@ -146,50 +143,30 @@
             // lblToplamFiyat
             // 
             lblToplamFiyat.AutoSize = true;
+            lblToplamFiyat.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             lblToplamFiyat.ForeColor = Color.Red;
-            lblToplamFiyat.Location = new Point(529, 366);
+            lblToplamFiyat.Location = new Point(521, 358);
             lblToplamFiyat.Name = "lblToplamFiyat";
-            lblToplamFiyat.Size = new Size(27, 15);
+            lblToplamFiyat.Size = new Size(48, 25);
             lblToplamFiyat.TabIndex = 10;
             lblToplamFiyat.Text = "****";
             // 
-            // button1
+            // btnSiparisOnayla
             // 
-            button1.Location = new Point(607, 337);
-            button1.Name = "button1";
-            button1.Size = new Size(132, 74);
-            button1.TabIndex = 11;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            btnSiparisOnayla.Location = new Point(607, 337);
+            btnSiparisOnayla.Name = "btnSiparisOnayla";
+            btnSiparisOnayla.Size = new Size(132, 74);
+            btnSiparisOnayla.TabIndex = 11;
+            btnSiparisOnayla.Text = "Siparisi Onayla";
+            btnSiparisOnayla.UseVisualStyleBackColor = true;
+            btnSiparisOnayla.Click += btnSiparisOnayla_Click;
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Controls.Add(cbKetcap);
-            flowLayoutPanel1.Controls.Add(cbMayonez);
             flowLayoutPanel1.Location = new Point(31, 191);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(200, 100);
             flowLayoutPanel1.TabIndex = 12;
-            // 
-            // cbKetcap
-            // 
-            cbKetcap.AutoSize = true;
-            cbKetcap.Location = new Point(10, 7);
-            cbKetcap.Name = "cbKetcap";
-            cbKetcap.Size = new Size(83, 19);
-            cbKetcap.TabIndex = 0;
-            cbKetcap.Text = "Ketcap";
-            cbKetcap.UseVisualStyleBackColor = true;
-            // 
-            // cbMayonez
-            // 
-            cbMayonez.AutoSize = true;
-            cbMayonez.Location = new Point(6, 31);
-            cbMayonez.Name = "cbMayonez";
-            cbMayonez.Size = new Size(83, 19);
-            cbMayonez.TabIndex = 1;
-            cbMayonez.Text = "Mayonez";
-            cbMayonez.UseVisualStyleBackColor = true;
             // 
             // frmSiparis
             // 
@@ -197,7 +174,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(flowLayoutPanel1);
-            Controls.Add(button1);
+            Controls.Add(btnSiparisOnayla);
             Controls.Add(lblToplamFiyat);
             Controls.Add(label2);
             Controls.Add(numericUpDown1);
@@ -214,8 +191,6 @@
             Text = "form2";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -233,9 +208,7 @@
         private NumericUpDown numericUpDown1;
         private Label label2;
         private Label lblToplamFiyat;
-        private Button button1;
+        private Button btnSiparisOnayla;
         private FlowLayoutPanel flowLayoutPanel1;
-        private CheckBox cbKetcap;
-        private CheckBox cbMayonez;
     }
 }

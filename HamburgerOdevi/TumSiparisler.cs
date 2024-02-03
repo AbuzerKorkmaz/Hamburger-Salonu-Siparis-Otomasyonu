@@ -12,9 +12,17 @@ namespace HamburgerOdevi
 {
     public partial class TumSiparisler : Form
     {
-        public TumSiparisler()
+        List<Siparis> _frmdenGelen = new List<Siparis>();
+        public TumSiparisler(List<Siparis> liste)
         {
             InitializeComponent();
+            _frmdenGelen = liste;
+            foreach (Siparis item in liste)
+            {
+                listBox1.Items.Add(item);
+            }
+           
         }
+
     }
 }
