@@ -62,8 +62,8 @@ namespace HamburgerOdevi
                         ekMalzemeAddedi++;
                             foreach (EkstraMalzemeMenusu item1 in Malzemeler)
                             {
-                        
-                                ekMalzemeFiyati += item1.Fiyat;
+                                
+                                ekMalzemeFiyati = item1.Fiyat*ekMalzemeAddedi;
                             }
                                          
                     }
@@ -72,7 +72,7 @@ namespace HamburgerOdevi
             siparis.MenuBoyutu = rbKucuk.Checked ?  rbKucuk.Text : rbOrta.Checked ? rbOrta.Text : rbBuyuk.Text;
             siparisBoyutCarpani= rbKucuk.Checked ? menuFiyati : rbOrta.Checked ? menuFiyati*0.1 : menuFiyati*0.2;
             adet=siparis.MenuAdeti = (int)numericUpDown1.Value;
-            siparis.EkMalzemeGeliri = ekMalzemeAddedi*adet*ekMalzemeFiyati;
+            siparis.EkMalzemeGeliri += adet*ekMalzemeFiyati;
             siparis.Tutar = TotalTutarHesapla(menuFiyati, ekMalzemeFiyati, siparisBoyutCarpani, adet);
             siparisinToplamTutari += siparis.Tutar;
             siparis.MalzemeSayisi = adet*(1+(int)ekMalzemeAddedi);
