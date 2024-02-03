@@ -12,23 +12,27 @@ namespace HamburgerOdevi
 {
     public partial class TumSiparisler : Form
     {
-        List<Siparis> _frmdenGelen = new List<Siparis>();
-      
-        public TumSiparisler(List<Siparis> liste,List<Siparis> onay)
+
+
+        public TumSiparisler(List<Siparis> liste)
         {
             InitializeComponent();
-            _frmdenGelen = liste;
+
             double ciro = 0;
+            double ekMalzemeTutari = 0;
+            int urunSayisi = 0;
             foreach (Siparis item in liste)
             {
-                
-                listBox1.Items.Add(item);
-                ciro += item.Tutar;
-            }
-           lblCiro.Text=ciro.ToString();
-            lblToplamSiparis.Text=liste.Count.ToString();
-        }
-        public List<Siparis> frmdenGelen { get; set; }
 
+                listBox1.Items.Add(item);
+                ekMalzemeTutari = item.EkMalzemeGeliri;
+                ciro += item.Tutar;
+                urunSayisi += item.MalzemeSayisi;
+            }
+            lblCiro.Text = ciro.ToString();
+            lblEkstraGelir.Text = ekMalzemeTutari.ToString();
+            lblToplamSiparis.Text = liste.Count.ToString();
+            lblUrunAdedi.Text=urunSayisi.ToString();
+        }
     }
 }

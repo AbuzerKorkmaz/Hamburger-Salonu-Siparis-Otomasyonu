@@ -13,7 +13,8 @@ namespace HamburgerOdevi
         public string MenuBoyutu { get; set; }
         public int MenuAdeti { get; set; }
         public double Tutar { get; set; }
-       public double TotalSiparisTutari { get; set; }
+       public double EkMalzemeGeliri { get; set; }
+        public int MalzemeSayisi { get; set; }
         public  override string ToString()
         {
             return $"{MenuAdeti} adet {MenuTipi}, {MenuBoyutu}, {EkMalzeme}, => Toplam Fiyat : {Tutar}";

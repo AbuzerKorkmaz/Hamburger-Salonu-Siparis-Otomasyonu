@@ -13,13 +13,13 @@ namespace HamburgerOdevi
 {
     public partial class frmSiparis : Form
     {
-        public frmSiparis(List<Siparis> list,List<Menu> _menu,List<EkstraMalzemeMenusu> ekstraMalzemes,List<Siparis> _siparis)
+        public frmSiparis(List<Siparis> list,List<Menu> _menu,List<EkstraMalzemeMenusu> ekstraMalzemes)
         {
             InitializeComponent();
             this.list = list;
             this.menu = _menu;
             this.Malzemeler= ekstraMalzemes;
-            onayliSiparisler = _siparis;
+            
             
             foreach (Menu item in _menu)
             {
@@ -42,11 +42,13 @@ namespace HamburgerOdevi
         double siparisBoyutCarpani;
         int adet;
         double siparisinToplamTutari = 0;
+        double ekMalzemeAddedi = 0;
         private void btnSiparisEkle_Click(object sender, EventArgs e)
         {
             
             double ekMalzemeFiyati = 0;
             Siparis siparis = new Siparis();
+            
             siparis.MenuTipi = comboBox1.SelectedItem.ToString();
             foreach (Menu item in menu)
             {
@@ -57,8 +59,10 @@ namespace HamburgerOdevi
                     if (item.Checked)
                     {
                      siparis.EkMalzeme += item.Text + " ";
+                        ekMalzemeAddedi++;
                             foreach (EkstraMalzemeMenusu item1 in Malzemeler)
                             {
+                        
                                 ekMalzemeFiyati += item1.Fiyat;
                             }
                                          
@@ -68,22 +72,22 @@ namespace HamburgerOdevi
             siparis.MenuBoyutu = rbKucuk.Checked ?  rbKucuk.Text : rbOrta.Checked ? rbOrta.Text : rbBuyuk.Text;
             siparisBoyutCarpani= rbKucuk.Checked ? menuFiyati : rbOrta.Checked ? menuFiyati*0.1 : menuFiyati*0.2;
             adet=siparis.MenuAdeti = (int)numericUpDown1.Value;
-
+            siparis.EkMalzemeGeliri = ekMalzemeAddedi*adet*ekMalzemeFiyati;
             siparis.Tutar = TotalTutarHesapla(menuFiyati, ekMalzemeFiyati, siparisBoyutCarpani, adet);
             siparisinToplamTutari += siparis.Tutar;
-           
+            siparis.MalzemeSayisi = adet*(1+(int)ekMalzemeAddedi);
             list.Add(siparis);
-            
-          
+           
+
             lblToplamFiyat.Text = siparisinToplamTutari.ToString();
             listBox1.Items.Add(siparis);
 
         }
-        List<Siparis> onayliSiparisler;
+       
         private void btnSiparisOnayla_Click(object sender, EventArgs e)
         {
+            
 
-            onayliSiparisler = list;
 
             MessageBox.Show("Siparişi Onaylıyor musunuz? ", "Onay Mesajı", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }

@@ -9,20 +9,21 @@ namespace HamburgerOdevi
        List<Siparis> siparisler = new List<Siparis>();
         List<Menu> AnaMenu = new List<Menu>();
         List<EkstraMalzemeMenusu> ekstraMalzeme=new List<EkstraMalzemeMenusu>();
-        List<Siparis> onayliSiparis=new List<Siparis>();
+       
         private void frmMainMenu_Load(object sender, EventArgs e)
         {
             FormlariTemizle();
-            frmSiparis frmSiparis = new frmSiparis(siparisler,AnaMenu,ekstraMalzeme,onayliSiparis);
+            frmSiparis frmSiparis = new frmSiparis(siparisler,AnaMenu,ekstraMalzeme);
             frmSiparis.MdiParent = this;
             frmSiparis.Dock = DockStyle.Fill;
+            
             frmSiparis.Show();
         }
         
         private void sipariþleriGörüntüleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormlariTemizle();
-            TumSiparisler tumSiparisler = new TumSiparisler(siparisler,onayliSiparis);
+            TumSiparisler tumSiparisler = new TumSiparisler(siparisler);
             tumSiparisler.MdiParent = this;
             tumSiparisler.Dock = DockStyle.Fill;
             tumSiparisler.Show();
@@ -33,7 +34,7 @@ namespace HamburgerOdevi
         private void sipariþOluþturToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormlariTemizle();
-            frmSiparis frmSiparis = new frmSiparis(siparisler,AnaMenu,ekstraMalzeme, onayliSiparis);
+            frmSiparis frmSiparis = new frmSiparis(siparisler,AnaMenu,ekstraMalzeme);
             frmSiparis.MdiParent = this;
             frmSiparis.Dock = DockStyle.Fill;
             frmSiparis.Show();
