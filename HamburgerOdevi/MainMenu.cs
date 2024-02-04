@@ -13,13 +13,13 @@ namespace HamburgerOdevi
 {
     public partial class frmSiparis : Form
     {
-        public frmSiparis(List<Siparis> list,List<Menu> _menu,List<EkstraMalzemeMenusu> ekstraMalzemes)
+        public frmSiparis(List<Siparis> list,List<Menu> _menu,List<EkstraMalzemeMenusu> ekstraMalzemes,int[] sayi)
         {
             InitializeComponent();
             this.list = list;
             this.menu = _menu;
             this.Malzemeler= ekstraMalzemes;
-            
+            this.siparisQuantity = sayi;
             
             foreach (Menu item in _menu)
             {
@@ -33,11 +33,11 @@ namespace HamburgerOdevi
             }
 
         }
-        
+        List<Siparis> gecici = new List<Siparis>();
         List<Siparis> list;
         List<Menu> menu;
         List<EkstraMalzemeMenusu> Malzemeler;
-       
+        int[] siparisQuantity;
         double menuFiyati = 0;
         double siparisBoyutCarpani;
         int adet;
@@ -61,8 +61,7 @@ namespace HamburgerOdevi
                      siparis.EkMalzeme += item.Text + " ";
                         ekMalzemeAddedi++;
                             foreach (EkstraMalzemeMenusu item1 in Malzemeler)
-                            {
-                                
+                            { 
                                 ekMalzemeFiyati = item1.Fiyat*ekMalzemeAddedi;
                             }
                                          
@@ -76,8 +75,11 @@ namespace HamburgerOdevi
             siparis.Tutar = TotalTutarHesapla(menuFiyati, ekMalzemeFiyati, siparisBoyutCarpani, adet);
             siparisinToplamTutari += siparis.Tutar;
             siparis.MalzemeSayisi = adet*(1+(int)ekMalzemeAddedi);
-            list.Add(siparis);
+            
+
+            
            
+            gecici.Add(siparis);
 
             lblToplamFiyat.Text = siparisinToplamTutari.ToString();
             listBox1.Items.Add(siparis);
@@ -86,10 +88,18 @@ namespace HamburgerOdevi
        
         private void btnSiparisOnayla_Click(object sender, EventArgs e)
         {
-            
-
-
-            MessageBox.Show("Siparişi Onaylıyor musunuz? ", "Onay Mesajı", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            DialogResult secim= new DialogResult();
+                secim= MessageBox.Show("Siparişi Onaylıyor musunuz? ", "Onay Mesajı", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            if (secim == DialogResult.Cancel) {
+                listBox1.Items.Clear(); }
+            else
+            {
+                foreach (Siparis item in gecici)
+                {
+                    list.Add(item);
+                }; 
+                siparisQuantity[0]+=1; 
+            }
         }
         
         private double TotalTutarHesapla(double menuP,double extraMP, double cons, int quantity) {

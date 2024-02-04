@@ -14,13 +14,14 @@ namespace HamburgerOdevi
     {
 
 
-        public TumSiparisler(List<Siparis> liste)
+        public TumSiparisler(List<Siparis> liste,int[] sayi)
         {
             InitializeComponent();
 
             double ciro = 0;
             double ekMalzemeTutari = 0;
             int urunSayisi = 0;
+           
             foreach (Siparis item in liste)
             {
 
@@ -28,10 +29,11 @@ namespace HamburgerOdevi
                 ekMalzemeTutari = item.EkMalzemeGeliri;
                 ciro += item.Tutar;
                 urunSayisi += item.MalzemeSayisi;
+                
             }
             lblCiro.Text = ciro.ToString();
             lblEkstraGelir.Text = ekMalzemeTutari.ToString();
-            lblToplamSiparis.Text = liste.Count.ToString();
+            lblToplamSiparis.Text = sayi[0].ToString();
             lblUrunAdedi.Text=urunSayisi.ToString();
         }
     }
